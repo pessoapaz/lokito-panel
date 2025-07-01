@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Lokito Core Commander 2.0</title>
+  <style>
+    body { background: #0d1117; color: #f0f6fc; font-family: monospace; padding: 2em; }
+    input[type="text"] { width: 80%%; padding: 1em; border-radius: 8px; background: #161b22; color: white; border: 1px solid #30363d; }
+    button { padding: 1em; margin: 0.5em 0.3em; background: #238636; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    .resposta, .estado, .atalhos { margin-top: 2em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>💻 Lokito Core Commander™ 2.0</h1>
+  <form method="post">
+    <input type="text" name="comando" placeholder="Digite /divulgar ou /gerar..." autofocus>
+    <button type="submit">Executar</button>
+  </form>
+
+  <div class="atalhos">
+    <h3>⚡ Atalhos de Campanha:</h3>
+    <form method="post">
+      <button name="comando" value="/divulgar">🟢 Iniciar Campanha</button>
+      <button name="comando" value="/produto Chip Secreto Pro Max">💀 Vender chip secreto</button>
+      <button name="comando" value="/produto Curso Oculto Mental">🔓 Vazar curso oculto</button>
+      <button name="comando" value="/produto Teoria Global da Mente">👁️ Espalhar conspiração mental</button>
+      <button name="comando" value="/modo hacker">⚠️ Alerta hacker ativado</button>
+      <button name="comando" value="/modo multilíngue">🌍 Disparo multilíngue</button>
+      <button name="comando" value="/gerar">🎯 Gerar frase</button>
+    </form>
+  </div>
+
+  {% if resposta %}
+    <div class="resposta">
+      <h3>🤖 Resposta:</h3>
+      <p>{{ resposta }}</p>
+    </div>
+  {% endif %}
+
+  <div class="estado">
+    <h3>📊 Missão Atual:</h3>
+    <p>Produto: {{ estado['produto'] }}<br>
+       Público: {{ estado['publico'] }}<br>
+       Link: {{ estado['link'] }}<br>
+       Modo: {{ estado['modo'] }}<br>
+       Ativo: {{ estado['ativo'] }}</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>🧠 Lokito Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #0d1117; color: #f0f6fc; font-family: monospace; padding: 2em; }
+    canvas { background: #161b22; border-radius: 12px; padding: 1em; }
+  </style>
+</head>
+<body>
+  <h1>📊 Monitor de Campanhas Lokito™</h1>
+  <canvas id="campanhaChart" width="800" height="400"></canvas>
+
+  <script>
+    fetch('/dados-campanhas')
+      .then(res => res.json())
+      .then(dados => {
+        const ctx = document.getElementById('campanhaChart').getContext('2d');
+        const chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: dados.labels,
+            datasets: [{
+              label: 'Campanhas por Modo',
+              data: dados.counts,
+              backgroundColor: '#3fb950'
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      });
+  </script>
+</body>
+</html>
